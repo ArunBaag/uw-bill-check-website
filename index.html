@@ -18,7 +18,7 @@
     <a class="brand" href="#top"><img src="assets/favicon.svg" alt="" width="32" height="32">
       <span><b data-cfg="partnerName">Your UW Partner</b><small data-cfg="partnerTitle">Authorised UW Partner</small></span></a>
     <nav class="nav">
-      <a href="#how">How it works</a><a href="#check">Bill check</a><a href="#faq">FAQ</a>
+      <a href="#how">How it works</a><a href="#check">Bill check</a><a href="#news" id="navNews" hidden>News</a><a href="#advice">Money tips</a><a href="#faq">FAQ</a>
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch light / dark mode" title="Light / dark mode">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.4 5.4 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8A9 9 0 0 0 12 3z"/></svg>
       </button>
@@ -192,7 +192,7 @@
             <div id="results"></div>
             <label class="block">Anything else I should know?<textarea name="notes" rows="3" placeholder="e.g. moving house in March, want faster broadband, two teenagers on unlimited data..."></textarea></label>
             <div class="consent card soft">
-              <label class="check-line"><input type="checkbox" id="consent" name="consent"><span>I agree that <b data-cfg="partnerName">my UW Partner</b> may use these details to prepare a comparison and contact me about it, as explained in the <a href="privacy.html" target="_blank" rel="noopener">privacy notice</a>.</span></label>
+              <label class="check-line"><input type="checkbox" id="consent" name="consent"><span>I agree that <b data-cfg="partnerName">my UW Partner</b> may use these details to prepare a comparison and contact me about it, as explained in the <a href="privacy.html" target="_blank" rel="noopener">privacy notice</a>. My details are deleted 30 days after my switch is completed, or after 30 days if I don't go ahead.</span></label>
               <div class="hp" aria-hidden="true"><label>Leave empty<input name="botcheck" tabindex="-1" autocomplete="off"></label></div>
               <div class="send-row">
                 <button type="button" class="btn btn-primary btn-lg" id="sendBtn">Send to <span data-cfg-first="partnerName">me</span></button>
@@ -235,13 +235,89 @@
     </div>
   </section>
 
+
+  <!-- NEWS -->
+  <section class="wrap section" id="news" hidden>
+    <p class="eyebrow center">Energy news</p>
+    <h2 class="center">What's happening to household bills</h2>
+    <p class="center muted">Short highlights in plain English - with a link to the source.</p>
+    <div class="news-grid" id="newsList"></div>
+  </section>
+
+  <!-- MONEY ADVICE -->
+  <section class="section advice-wrap" id="advice">
+    <div class="wrap">
+      <p class="eyebrow center">Free money advice</p>
+      <h2 class="center">Cut your bills without cutting comfort</h2>
+      <div class="advice-tabs" role="tablist">
+        <button type="button" role="tab" class="on" data-pane="tips" aria-selected="true">⚡ Save energy</button>
+        <button type="button" role="tab" data-pane="budget" aria-selected="false">🧮 Budget planner</button>
+        <button type="button" role="tab" data-pane="help" aria-selected="false">🤝 Help you may get</button>
+      </div>
+
+      <div class="pane card" id="pane-tips">
+        <h3>Easy ways to use less energy</h3>
+        <p class="muted">Yearly savings estimated by the Energy Saving Trust (October 2026) for a typical home in Great Britain. Your saving depends on your home and tariff.</p>
+        <div class="tips">
+          <div class="tip"><b>£50</b><span>Dry clothes on a rack instead of using the tumble dryer</span></div>
+          <div class="tip"><b>£45</b><span>Keep showers to four minutes</span></div>
+          <div class="tip"><b>£45</b><span>Switch appliances off standby at the wall</span></div>
+          <div class="tip"><b>£45</b><span>Top up your hot water cylinder insulation</span></div>
+          <div class="tip"><b>£55</b><span>Draught-proof windows and doors (professional)</span></div>
+          <div class="tip"><b>£26</b><span>Fewer, cooler washes (30°C)</span></div>
+          <div class="tip"><b>£20</b><span>Fit a tap aerator</span></div>
+          <div class="tip"><b>£10</b><span>Only boil the water you need in the kettle</span></div>
+          <div class="tip"><b>£10</b><span>Only run the dishwasher when it's full</span></div>
+          <div class="tip"><b>£7</b><span>Turn off lights when you leave a room</span></div>
+        </div>
+        <p class="tiny">Source: <a href="https://energysavingtrust.org.uk/hub/quick-tips-to-save-energy" target="_blank" rel="noopener">Energy Saving Trust - quick tips to save energy</a>. Also: send meter readings every month so you're billed for what you really use, and check your Direct Debit isn't building a big credit.</p>
+      </div>
+
+      <div class="pane card" id="pane-budget" hidden>
+        <h3>Your household bills planner</h3>
+        <p class="muted">Pop in what you pay each month (yearly bills like car insurance: divide by 12). Nothing here is saved or sent.</p>
+        <div class="grid4 planner" id="planner">
+          <label>Take-home income / month<input data-b="income" type="number" min="0" step="1" inputmode="decimal" placeholder="optional"></label>
+          <label>Energy<input data-b="bill" data-k="energy" type="number" min="0" step="1" inputmode="decimal"></label>
+          <label>Broadband & TV<input data-b="bill" data-k="broadband" type="number" min="0" step="1" inputmode="decimal"></label>
+          <label>Mobiles<input data-b="bill" data-k="mobile" type="number" min="0" step="1" inputmode="decimal"></label>
+          <label>Home cover & insurance<input data-b="bill" data-k="cover" type="number" min="0" step="1" inputmode="decimal"></label>
+          <label>Car insurance<input data-b="bill" data-k="car" type="number" min="0" step="1" inputmode="decimal"></label>
+          <label>Water<input data-b="bill" data-k="water" type="number" min="0" step="1" inputmode="decimal"></label>
+          <label>Council tax<input data-b="bill" data-k="council" type="number" min="0" step="1" inputmode="decimal"></label>
+          <label>Other (TV licence, subscriptions)<input data-b="bill" data-k="other" type="number" min="0" step="1" inputmode="decimal"></label>
+        </div>
+        <button type="button" class="btn btn-ghost mt" id="fillPlanner">Fill in from my bill check</button>
+        <div class="planner-out" id="plannerOut"></div>
+        <ol class="steps-list">
+          <li><b>List every bill and its end date.</b> Put a reminder in your phone 4-6 weeks before each contract ends.</li>
+          <li><b>Never auto-renew without checking.</b> Out-of-contract broadband, mobile and insurance prices are often the highest.</li>
+          <li><b>Spread energy costs evenly.</b> A steady monthly Direct Debit means no winter shock - check it twice a year against your usage.</li>
+          <li><b>Pay for the phone, not twice.</b> When a handset contract ends, move to SIM-only.</li>
+          <li><b>Fewer bills, fewer dates.</b> Putting services together on one bill makes them easier to keep track of.</li>
+          <li><b>Build a small "bills buffer".</b> Even £10-£20 a month set aside helps with surprises like a boiler repair.</li>
+        </ol>
+      </div>
+
+      <div class="pane card" id="pane-help" hidden>
+        <h3>Help you may be entitled to</h3>
+        <div class="help-grid">
+          <div><h4>Warm Home Discount</h4><p>£150 off your electricity bill this winter (October-March) if you get certain benefits - most people get it automatically. <a href="https://www.gov.uk/the-warm-home-discount-scheme" target="_blank" rel="noopener">Check on GOV.UK</a></p></div>
+          <div><h4>Priority Services Register</h4><p>Free extra support from your energy and water companies if you're older, disabled, unwell or have young children - for example advance warning of power cuts. Ask your supplier.</p></div>
+          <div><h4>Social broadband & mobile tariffs</h4><p>Cheaper broadband and mobile deals for people on Universal Credit and some other benefits. <a href="https://www.ofcom.org.uk/phones-telecoms-and-internet/advice-for-consumers/costs-and-billing/social-tariffs" target="_blank" rel="noopener">See Ofcom's list</a></p></div>
+          <div><h4>Struggling with energy debt?</h4><p>Talk to your supplier first - they must offer affordable repayment plans. Free, independent advice: <a href="https://www.citizensadvice.org.uk/" target="_blank" rel="noopener">Citizens Advice</a>.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="wrap section" id="faq">
     <h2 class="center">Questions</h2>
     <div class="faq">
       <details><summary>Is it really free?</summary><p>Yes. The bill check and your personal comparison cost nothing, and there's no obligation to switch.</p></details>
       <details><summary>Do I need all my bills?</summary><p>No - fill in what you know. Monthly prices are enough to start; unit rates and contract dates make the comparison more accurate.</p></details>
-      <details><summary>What happens to my details?</summary><p>They're saved only in your own browser until you press Send, then go only to me. I use them to prepare your comparison and contact you about it. See the <a href="privacy.html">privacy notice</a>.</p></details>
+      <details><summary>What happens to my details?</summary><p>They're saved only in your own browser until you send them, then go only to me. I use them only to prepare your comparison and contact you about it. I delete them <b>30 days after your switch is completed</b>, or <b>30 days after you sent them</b> if you decide not to go ahead. See the <a href="privacy.html">privacy notice</a>.</p></details>
       <details><summary>I'm still in a contract - is there any point?</summary><p>Yes. I can check your end dates and exit fees and tell you the best time to move - sometimes it's right away, sometimes it's worth waiting.</p></details>
       <details><summary>Is this the Utility Warehouse website?</summary><p>No. This is my personal website as an Authorised UW Partner. Prices and offers are confirmed through UW's official sign-up when you decide to switch.</p></details>
     </div>
@@ -263,6 +339,12 @@
 <datalist id="speeds"><option value="36"><option value="67"><option value="80"><option value="150"><option value="300"><option value="500"><option value="900"></datalist>
 <datalist id="networks"><option>EE</option><option>O2</option><option>Vodafone</option><option>Three</option><option>giffgaff</option><option>Tesco Mobile</option><option>Sky Mobile</option><option>iD Mobile</option><option>VOXI</option><option>SMARTY</option><option>Lebara</option><option>Lyca Mobile</option><option>Talkmobile</option><option>Virgin Mobile</option></datalist>
 
+<aside class="promo" id="promo" hidden aria-label="Offer">
+  <button type="button" class="promo-x" id="promoClose" aria-label="Close">×</button>
+  <b id="promoTitle"></b><p id="promoText"></p>
+  <a class="btn btn-primary" id="promoBtn" href="#check"></a>
+  <small id="promoSmall"></small>
+</aside>
 <script src="assets/app.js"></script>
 </body>
 </html>

@@ -114,6 +114,7 @@
               <label>Fixed deal end date<input name="energy.end" type="date"></label>
               <label>Exit fee per fuel (£)<input name="energy.exit_fee" type="number" min="0" step="1" inputmode="decimal"></label>
               <label>Monthly Direct Debit (£)<input name="energy.monthly" type="number" min="0" step="0.01" inputmode="decimal"></label>
+              <label>How old is the bill you're reading from?<select name="energy.bill_age"><option value="">Choose</option><option>This month / current prices</option><option>1-3 months old</option><option>Older than 3 months</option></select></label>
               <label>Smart meter?<select name="energy.smart"><option value="">Not sure</option><option>Yes</option><option>No</option></select></label>
             </div>
             <details class="more"><summary>I have my bill - add unit rates & usage (gives the best check)</summary>
@@ -135,10 +136,12 @@
             <div class="grid2">
               <label>Do you have broadband?<select name="broadband.has"><option>Yes</option><option>No</option></select></label>
               <label>Provider<input name="broadband.provider" list="isps" placeholder="e.g. BT"></label>
-              <label>Speed (Mb, if known)<input name="broadband.speed" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 150"></label>
+              <label>Connection type<select name="broadband.tech"><option value="">Choose</option><option>Full fibre (to the home)</option><option>Part fibre (copper phone line)</option><option>Cable (Virgin Media)</option><option>Not sure</option></select></label>
+              <label>Speed (Mb)<input name="broadband.speed" type="number" min="0" step="1" inputmode="numeric" list="speeds" placeholder="e.g. 150"></label>
               <label>Monthly price (£)<input name="broadband.monthly" type="number" min="0" step="0.01" inputmode="decimal"></label>
               <label>Contract end date<input name="broadband.end" type="date"></label>
               <label>Exit fee if you left now (£)<input name="broadband.exit_fee" type="number" min="0" step="1" inputmode="decimal"></label>
+              <label>Is this an introductory / discounted price?<select name="broadband.intro"><option value="">Not sure</option><option>Yes</option><option>No</option></select></label>
               <label>Includes TV package?<select name="broadband.tv"><option value="">No</option><option>Yes</option></select></label>
               <label>Need a landline?<select name="broadband.landline"><option value="">Not sure</option><option>Yes</option><option>No</option></select></label>
             </div>
@@ -257,6 +260,7 @@
 
 <datalist id="suppliers"><option>British Gas</option><option>Octopus Energy</option><option>E.ON Next</option><option>EDF</option><option>OVO</option><option>Scottish Power</option><option>So Energy</option><option>Outfox the Market</option><option>Fuse Energy</option><option>Ecotricity</option><option>Good Energy</option><option>Sainsbury's Energy</option><option>Utility Warehouse</option></datalist>
 <datalist id="isps"><option>BT</option><option>Sky</option><option>Virgin Media</option><option>TalkTalk</option><option>Vodafone</option><option>EE</option><option>Plusnet</option><option>NOW Broadband</option><option>Hyperoptic</option><option>Community Fibre</option></datalist>
+<datalist id="speeds"><option value="36"><option value="67"><option value="80"><option value="150"><option value="300"><option value="500"><option value="900"></datalist>
 <datalist id="networks"><option>EE</option><option>O2</option><option>Vodafone</option><option>Three</option><option>giffgaff</option><option>Tesco Mobile</option><option>Sky Mobile</option><option>iD Mobile</option><option>VOXI</option><option>SMARTY</option><option>Lebara</option><option>Lyca Mobile</option><option>Talkmobile</option><option>Virgin Mobile</option></datalist>
 
 <script src="assets/app.js"></script>

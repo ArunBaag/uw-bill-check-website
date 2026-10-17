@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free household bill check</title>
+  <meta name="description" content="Free, no-obligation check of your energy, broadband, mobile and home insurance bills.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <script src="config.js"></script>
+</head>
+<body>
+<a class="skip" href="#check">Skip to the bill check</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top"><img src="assets/favicon.svg" alt="" width="32" height="32">
+      <span><b data-cfg="partnerName">Your UW Partner</b><small data-cfg="partnerTitle">Authorised UW Partner</small></span></a>
+    <nav class="nav">
+      <a href="#how">How it works</a><a href="#check">Bill check</a><a href="#faq">FAQ</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch light / dark mode" title="Light / dark mode">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.4 5.4 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8A9 9 0 0 0 12 3z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <p class="eyebrow">Free · No obligation · About 5 minutes</p>
+        <h1>Are you paying too much for your <span class="grad">household bills?</span></h1>
+        <p class="lead">Tell me what you pay for energy, broadband, mobile and home insurance. You'll get an instant
+          <b>bill health check</b> right here - then I'll prepare a personal comparison with one simple Utility Warehouse bundle.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary btn-lg" href="#check">Start my free bill check</a>
+          <a class="btn btn-ghost btn-lg" id="heroWhatsApp" href="#" hidden>WhatsApp me</a>
+        </div>
+        <ul class="ticks">
+          <li>One bill for all your services</li><li>Nothing changes unless you say yes</li><li>Your details only go to me</li>
+        </ul>
+      </div>
+      <div class="hero-card" aria-hidden="true">
+        <div class="hc-row"><span class="dot e"></span>Energy<b>£1,8xx</b></div>
+        <div class="hc-row"><span class="dot b"></span>Broadband<b>£4x/mo</b></div>
+        <div class="hc-row"><span class="dot m"></span>2 SIMs<b>£5x/mo</b></div>
+        <div class="hc-row"><span class="dot i"></span>Home insurance & cover<b>£3x/mo</b></div>
+        <div class="hc-total">Your bill health score<div class="gauge"><span style="width:62%"></span></div><small>Find yours in 5 minutes</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="wrap section">
+    <h2 class="center">What I can check for you</h2>
+    <div class="cards5">
+      <div class="card svc"><div class="ic e">⚡</div><h3>Energy</h3><p>Gas & electricity - tariff, unit rates, standing charges, exit fees.</p></div>
+      <div class="card svc"><div class="ic b">📶</div><h3>Broadband</h3><p>Full Fibre speeds, monthly price, contract end and April price rises.</p></div>
+      <div class="card svc"><div class="ic m">📱</div><h3>Mobile</h3><p>Every SIM in the house - data, monthly cost, contract end.</p></div>
+      <div class="card svc"><div class="ic i">🏠</div><h3>Home insurance & cover</h3><p>Buildings & contents, boiler & home cover, pets and home security - as one package.</p></div>
+      <div class="card svc"><div class="ic c">🚗</div><h3>Car insurance</h3><p>Tell me your renewal date - I'll let you know when there's an option worth comparing.</p></div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="wrap section" id="how">
+    <h2 class="center">How it works</h2>
+    <ol class="steps3">
+      <li><span>1</span><h3>Fill in your bills</h3><p>Grab your latest bills (or banking app) and fill in what you know. Skip anything you're unsure of.</p></li>
+      <li><span>2</span><h3>See your health check</h3><p>Instantly see where you may be paying more than you need to - no sign-up.</p></li>
+      <li><span>3</span><h3>Get your personal comparison</h3><p>Send it to me. I'll prepare a one-page comparison and talk you through it - no pressure.</p></li>
+    </ol>
+  </section>
+
+  <!-- BILL CHECK -->
+  <section class="section check-wrap" id="check">
+    <div class="wrap">
+      <div class="check card">
+        <div class="check-head">
+          <h2>Your free bill check</h2>
+          <p class="muted">Your answers are saved on this device as you go. Nothing is sent until you press <b>Send</b>.</p>
+          <div class="progress"><div class="bar" id="bar"></div></div>
+          <ol class="stepper" id="stepper"></ol>
+        </div>
+
+        <form id="form" novalidate autocomplete="on">
+          <!-- STEP 1 -->
+          <fieldset class="step" data-title="You">
+            <legend>About you</legend>
+            <div class="grid2">
+              <label>Your name *<input name="contact.name" required autocomplete="name"></label>
+              <label>Postcode *<input name="contact.postcode" required autocomplete="postal-code" placeholder="e.g. LE2 3AB"></label>
+              <label>Mobile number<input name="contact.phone" type="tel" autocomplete="tel"></label>
+              <label>Email<input name="contact.email" type="email" autocomplete="email"></label>
+              <label>Best way to contact you<select name="contact.method"><option>WhatsApp</option><option>Phone call</option><option>Text</option><option>Email</option></select></label>
+              <label>Best time<select name="contact.time"><option>Any time</option><option>Weekday daytime</option><option>Weekday evening</option><option>Weekend</option></select></label>
+              <label>People in the home<select name="contact.household"><option value="">Choose</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></label>
+              <label>Do you own or rent?<select name="contact.tenure"><option value="">Choose</option><option>Own</option><option>Rent</option></select></label>
+            </div>
+            <p class="hint">Please don't type bank details, passwords or account numbers anywhere on this form.</p>
+          </fieldset>
+
+          <!-- STEP 2 ENERGY -->
+          <fieldset class="step" data-title="Energy">
+            <legend>Energy <span class="opt">skip anything you don't know</span></legend>
+            <div class="grid2">
+              <label>What do you have?<select name="energy.fuel"><option>Gas & electricity</option><option>Electricity only</option><option>I don't pay energy bills</option></select></label>
+              <label>Current supplier<input name="energy.supplier" list="suppliers" placeholder="e.g. British Gas"></label>
+              <label>Tariff name<input name="energy.tariff" placeholder="e.g. Flexible Octopus"></label>
+              <label>Tariff type<select name="energy.type"><option value="">Not sure</option><option>Variable / standard</option><option>Fixed</option><option>Tracker</option><option>Prepayment</option></select></label>
+              <label>Fixed deal end date<input name="energy.end" type="date"></label>
+              <label>Exit fee per fuel (£)<input name="energy.exit_fee" type="number" min="0" step="1" inputmode="decimal"></label>
+              <label>Monthly Direct Debit (£)<input name="energy.monthly" type="number" min="0" step="0.01" inputmode="decimal"></label>
+              <label>Smart meter?<select name="energy.smart"><option value="">Not sure</option><option>Yes</option><option>No</option></select></label>
+            </div>
+            <details class="more"><summary>I have my bill - add unit rates & usage (gives the best check)</summary>
+              <div class="grid4">
+                <label>Elec unit rate (p/kWh)<input name="energy.elec_unit" type="number" min="0" step="0.01" inputmode="decimal"></label>
+                <label>Elec standing (p/day)<input name="energy.elec_sc" type="number" min="0" step="0.01" inputmode="decimal"></label>
+                <label>Gas unit rate (p/kWh)<input name="energy.gas_unit" type="number" min="0" step="0.01" inputmode="decimal"></label>
+                <label>Gas standing (p/day)<input name="energy.gas_sc" type="number" min="0" step="0.01" inputmode="decimal"></label>
+                <label>Elec use a year (kWh)<input name="energy.elec_kwh" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 2700"></label>
+                <label>Gas use a year (kWh)<input name="energy.gas_kwh" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 11500"></label>
+              </div>
+              <p class="hint">These are on page 2 of most bills or in your supplier's app ("estimated annual consumption").</p>
+            </details>
+          </fieldset>
+
+          <!-- STEP 3 BROADBAND -->
+          <fieldset class="step" data-title="Broadband">
+            <legend>Broadband</legend>
+            <div class="grid2">
+              <label>Do you have broadband?<select name="broadband.has"><option>Yes</option><option>No</option></select></label>
+              <label>Provider<input name="broadband.provider" list="isps" placeholder="e.g. BT"></label>
+              <label>Speed (Mb, if known)<input name="broadband.speed" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 150"></label>
+              <label>Monthly price (£)<input name="broadband.monthly" type="number" min="0" step="0.01" inputmode="decimal"></label>
+              <label>Contract end date<input name="broadband.end" type="date"></label>
+              <label>Exit fee if you left now (£)<input name="broadband.exit_fee" type="number" min="0" step="1" inputmode="decimal"></label>
+              <label>Includes TV package?<select name="broadband.tv"><option value="">No</option><option>Yes</option></select></label>
+              <label>Need a landline?<select name="broadband.landline"><option value="">Not sure</option><option>Yes</option><option>No</option></select></label>
+            </div>
+          </fieldset>
+
+          <!-- STEP 4 MOBILE -->
+          <fieldset class="step" data-title="Mobile">
+            <legend>Mobile SIMs <span class="opt">add one row per phone in the home</span></legend>
+            <div id="sims"></div>
+            <button type="button" class="btn btn-ghost" id="addSim">+ Add another SIM</button>
+          </fieldset>
+
+          <!-- STEP 5 HOME INSURANCE & COVER -->
+          <fieldset class="step" data-title="Home & car">
+            <legend>Home insurance & home cover <span class="opt">one package with UW</span></legend>
+            <div class="grid2">
+              <label>Home insurance type<select name="home.type"><option value="">None / not sure</option><option>Buildings & contents</option><option>Contents only</option><option>Buildings only</option></select></label>
+              <label>Home insurer<input name="home.insurer" placeholder="e.g. Aviva"></label>
+              <label>Yearly premium (£)<input name="home.annual" type="number" min="0" step="0.01" inputmode="decimal"></label>
+              <label>Renewal date<input name="home.renewal" type="date"></label>
+            </div>
+            <h4>Boiler & home cover</h4>
+            <div class="grid2">
+              <label>Provider<input name="cover.provider" placeholder="e.g. British Gas HomeCare"></label>
+              <label>Monthly price (£)<input name="cover.monthly" type="number" min="0" step="0.01" inputmode="decimal"></label>
+            </div>
+            <div class="chips" role="group" aria-label="What your cover includes">
+              <label class="chip"><input type="checkbox" name="cover.covers" value="Boiler service">Boiler service</label>
+              <label class="chip"><input type="checkbox" name="cover.covers" value="Boiler repairs">Boiler repairs</label>
+              <label class="chip"><input type="checkbox" name="cover.covers" value="Central heating">Central heating</label>
+              <label class="chip"><input type="checkbox" name="cover.covers" value="Plumbing">Plumbing</label>
+              <label class="chip"><input type="checkbox" name="cover.covers" value="Drainage">Drainage</label>
+              <label class="chip"><input type="checkbox" name="cover.covers" value="Electrics">Electrics</label>
+            </div>
+            <h4>Pets & home security</h4>
+            <div id="pets"></div>
+            <button type="button" class="btn btn-ghost" id="addPet">+ Add a pet</button>
+            <div class="grid2 mt">
+              <label>Alarm / security provider<input name="security.provider" placeholder="e.g. Verisure, Ring"></label>
+              <label>Monthly price (£)<input name="security.monthly" type="number" min="0" step="0.01" inputmode="decimal"></label>
+            </div>
+            <h4>Car insurance <span class="opt">coming soon to UW - I'll remind you</span></h4>
+            <div class="grid2">
+              <label>Insurer<input name="car.insurer" placeholder="e.g. Admiral"></label>
+              <label>Yearly premium (£)<input name="car.annual" type="number" min="0" step="0.01" inputmode="decimal"></label>
+              <label>Renewal date<input name="car.renewal" type="date"></label>
+              <label>Number of cars<select name="car.cars"><option value="">0</option><option>1</option><option>2</option><option>3+</option></select></label>
+            </div>
+          </fieldset>
+
+          <!-- STEP 6 REVIEW -->
+          <fieldset class="step" data-title="Your check">
+            <legend>Your bill health check</legend>
+            <div id="results"></div>
+            <label class="block">Anything else I should know?<textarea name="notes" rows="3" placeholder="e.g. moving house in March, want faster broadband, two teenagers on unlimited data..."></textarea></label>
+            <div class="consent card soft">
+              <label class="check-line"><input type="checkbox" id="consent" name="consent"><span>I agree that <b data-cfg="partnerName">my UW Partner</b> may use these details to prepare a comparison and contact me about it, as explained in the <a href="privacy.html" target="_blank" rel="noopener">privacy notice</a>.</span></label>
+              <div class="hp" aria-hidden="true"><label>Leave empty<input name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+              <div class="send-row">
+                <button type="button" class="btn btn-primary btn-lg" id="sendBtn">Send to <span data-cfg-first="partnerName">me</span></button>
+                <a class="btn btn-whatsapp" id="waBtn" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+                <a class="btn btn-ghost" id="mailBtn" href="#">Send by email</a>
+              </div>
+              <p class="hint" id="sendNote"></p>
+              <div id="sendResult" role="status" aria-live="polite"></div>
+            </div>
+          </fieldset>
+
+          <div class="nav-row">
+            <button type="button" class="btn btn-ghost" id="backBtn">Back</button>
+            <span class="saved" id="saved"></span>
+            <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="wrap section">
+    <div class="why">
+      <div>
+        <h2>Why talk to me?</h2>
+        <ul class="ticks big">
+          <li>I do the comparing and the paperwork - you just say yes or no.</li>
+          <li>Energy, broadband, mobile and home insurance in <b>one monthly bill</b>.</li>
+          <li>A clear one-page comparison with your real numbers.</li>
+          <li>A local, real person - not a call centre script.</li>
+        </ul>
+      </div>
+      <div class="card bonus" id="bonusCard" hidden>
+        <p class="eyebrow">Ask me about</p>
+        <h3>Welcome bonus when you switch 2 or more services</h3>
+        <div class="tiers" id="tiers"></div>
+        <p class="tiny">Current welcome offer - UW terms and eligibility apply, and offers can change.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="wrap section" id="faq">
+    <h2 class="center">Questions</h2>
+    <div class="faq">
+      <details><summary>Is it really free?</summary><p>Yes. The bill check and your personal comparison cost nothing, and there's no obligation to switch.</p></details>
+      <details><summary>Do I need all my bills?</summary><p>No - fill in what you know. Monthly prices are enough to start; unit rates and contract dates make the comparison more accurate.</p></details>
+      <details><summary>What happens to my details?</summary><p>They're saved only in your own browser until you press Send, then go only to me. I use them to prepare your comparison and contact you about it. See the <a href="privacy.html">privacy notice</a>.</p></details>
+      <details><summary>I'm still in a contract - is there any point?</summary><p>Yes. I can check your end dates and exit fees and tell you the best time to move - sometimes it's right away, sometimes it's worth waiting.</p></details>
+      <details><summary>Is this the Utility Warehouse website?</summary><p>No. This is my personal website as an Authorised UW Partner. Prices and offers are confirmed through UW's official sign-up when you decide to switch.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p><b data-cfg="partnerName">Your UW Partner</b> · <span data-cfg="partnerTitle">Authorised UW Partner</span><span id="pid"></span><span id="areaTxt"></span></p>
+    <p class="tiny">This is a personal website of an Authorised Utility Warehouse (UW) Partner. It is not the official UW website and is not operated by UW.
+      The bill health check is a general guide only, not a quote, offer or financial advice. Prices, bundles and offers are confirmed only through UW's official sign-up, where UW's terms apply.
+      · <a href="privacy.html">Privacy notice</a> · <a href="#" id="clearData">Clear my saved answers</a></p>
+  </div>
+</footer>
+
+<datalist id="suppliers"><option>British Gas</option><option>Octopus Energy</option><option>E.ON Next</option><option>EDF</option><option>OVO</option><option>Scottish Power</option><option>So Energy</option><option>Outfox the Market</option><option>Fuse Energy</option><option>Ecotricity</option><option>Good Energy</option><option>Sainsbury's Energy</option><option>Utility Warehouse</option></datalist>
+<datalist id="isps"><option>BT</option><option>Sky</option><option>Virgin Media</option><option>TalkTalk</option><option>Vodafone</option><option>EE</option><option>Plusnet</option><option>NOW Broadband</option><option>Hyperoptic</option><option>Community Fibre</option></datalist>
+<datalist id="networks"><option>EE</option><option>O2</option><option>Vodafone</option><option>Three</option><option>giffgaff</option><option>Tesco Mobile</option><option>Sky Mobile</option><option>iD Mobile</option><option>VOXI</option><option>SMARTY</option><option>Lebara</option><option>Lyca Mobile</option><option>Talkmobile</option><option>Virgin Mobile</option></datalist>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

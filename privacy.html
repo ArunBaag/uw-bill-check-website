@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy notice</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <script src="config.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="index.html"><img src="assets/favicon.svg" alt="" width="32" height="32">
+    <span><b class="cfg-name">Your UW Partner</b><small>Authorised UW Partner</small></span></a>
+  <nav class="nav"><a href="index.html#check">Bill check</a></nav>
+</div></header>
+
+<main class="wrap">
+  <article class="card doc">
+    <h1>Privacy notice</h1>
+    <p class="muted">Last updated: October 2026</p>
+
+    <h2>Who I am</h2>
+    <p><b class="cfg-name">Your UW Partner</b> is an Authorised Utility Warehouse (UW) Partner and runs this personal website.
+      I am the data controller for the details you send through it. Contact: <a class="cfg-mail" href="#">email</a>.</p>
+    <p>This is not the official Utility Warehouse website. If you later sign up with UW, UW's own privacy policy applies to what you give UW.</p>
+
+    <h2>What I collect</h2>
+    <ul>
+      <li>Your name, postcode, phone number and/or email, and how you'd like to be contacted.</li>
+      <li>The bill details you choose to enter: suppliers, tariffs, prices, contract and renewal dates, exit fees, the number of SIMs, pets and cars, and any notes.</li>
+    </ul>
+    <p>Please don't enter bank details, passwords or account numbers - I never need them on this site.</p>
+
+    <h2>Why I use it</h2>
+    <p>Only to prepare your personal comparison and to contact you about it (for example about your contract end or renewal dates).
+      The lawful basis is your consent, which you give by ticking the box before sending. I don't sell or share your details for marketing.</p>
+
+    <h2>Where it goes</h2>
+    <ul>
+      <li>While you fill in the form, your answers are saved only in your own browser (so you can come back later). Use <a href="index.html" id="clearLink">Clear my saved answers</a> at the bottom of the main page to remove them.</li>
+      <li>When you press <b>Send</b>, your details are emailed to me through Web3Forms (a form-to-email service acting on my behalf). If you choose WhatsApp or email instead, they go through that service.</li>
+      <li>I keep them in my own records on my computer to prepare your comparison.</li>
+      <li>This website has no cookies, adverts or tracking.</li>
+    </ul>
+
+    <h2>How long I keep it</h2>
+    <p>Up to <b id="ret">12</b> months after we last spoke, unless you become a customer (then as needed to look after your account), or sooner if you ask me to delete it.</p>
+
+    <h2>Your rights</h2>
+    <p>You can ask to see, correct or delete your details, or withdraw your consent, at any time by contacting me. You can also complain to the
+      Information Commissioner's Office (ico.org.uk).</p>
+
+    <p><a class="btn btn-primary" href="index.html#check">Back to the bill check</a></p>
+  </article>
+</main>
+<footer class="footer"><div class="wrap"><p class="tiny">Personal website of an Authorised Utility Warehouse (UW) Partner. Not the official UW website and not operated by UW.</p></div></footer>
+<script>
+(function(){var C=window.SITE_CONFIG||{};
+document.querySelectorAll(".cfg-name").forEach(function(e){if(C.partnerName)e.textContent=C.partnerName;});
+document.querySelectorAll(".cfg-mail").forEach(function(e){if(C.email){e.textContent=C.email;e.href="mailto:"+C.email;}});
+if(C.retentionMonths)document.getElementById("ret").textContent=C.retentionMonths;})();
+</script>
+</body>
+</html>

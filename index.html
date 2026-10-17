@@ -6,6 +6,17 @@
   <title>Free household bill check</title>
   <meta name="description" content="Free, no-obligation check of your energy, broadband, mobile and home cover bills.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://arunbaag.github.io/uw-bill-check-website/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arunbaag.github.io/uw-bill-check-website/">
+  <meta property="og:title" content="Free household bill check - Arun Baag, Authorised UW Partner">
+  <meta property="og:description" content="5 minutes: see where you may be paying more than you need to for energy, broadband, mobile and home cover. Free, no obligation.">
+  <meta property="og:image" content="https://arunbaag.github.io/uw-bill-check-website/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#5B2D9B">
   <link rel="stylesheet" href="assets/style.css">
   <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
   <script src="config.js"></script>
@@ -193,7 +204,9 @@
             <label class="block">Anything else I should know?<textarea name="notes" rows="3" placeholder="e.g. moving house in March, want faster broadband, two teenagers on unlimited data..."></textarea></label>
             <div class="consent card soft">
               <label class="check-line"><input type="checkbox" id="consent" name="consent"><span>I agree that <b data-cfg="partnerName">my UW Partner</b> may use these details to prepare a comparison and contact me about it, as explained in the <a href="privacy.html" target="_blank" rel="noopener">privacy notice</a>. My details are deleted 30 days after my switch is completed, or after 30 days if I don't go ahead.</span></label>
-              <div class="hp" aria-hidden="true"><label>Leave empty<input name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+              <label class="check-line opt-line"><input type="checkbox" id="optRemind"><span><b>Optional:</b> remind me about 6 weeks before my contracts end - keep my contact details and contract end dates until then.</span></label>
+            <label class="check-line opt-line"><input type="checkbox" id="optTips"><span><b>Optional:</b> send me occasional bill-saving tips and offers (up to 12 months - reply STOP any time).</span></label>
+            <div class="hp" aria-hidden="true"><label>Leave empty<input name="botcheck" tabindex="-1" autocomplete="off"></label></div>
               <div class="send-row">
                 <button type="button" class="btn btn-primary btn-lg" id="sendBtn">Send to <span data-cfg-first="partnerName">me</span></button>
                 <a class="btn btn-whatsapp" id="waBtn" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
@@ -235,6 +248,27 @@
     </div>
   </section>
 
+
+  <!-- ABOUT -->
+  <section class="wrap section" id="about" hidden>
+    <div class="about card">
+      <img id="aboutPhoto" alt="" width="160" height="160" hidden>
+      <div>
+        <p class="eyebrow">Hello, I'm <span data-cfg-first="partnerName">your Partner</span></p>
+        <h2><span data-cfg="partnerName">Your UW Partner</span> <small class="muted" data-cfg="partnerTitle">Authorised UW Partner</small></h2>
+        <p id="aboutBio"></p>
+        <p class="reply" id="aboutReply"></p>
+        <div class="cta-row"><a class="btn btn-primary" href="#check">Start my free bill check</a><a class="btn btn-ghost" id="aboutWa" href="#" hidden>WhatsApp me</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="wrap section" id="reviews" hidden>
+    <h2 class="center">What customers say</h2>
+    <div class="reviews" id="reviewList"></div>
+    <p class="tiny center">Real reviews from real customers, shared with their permission.</p>
+  </section>
 
   <!-- NEWS -->
   <section class="wrap section" id="news" hidden>
@@ -330,7 +364,7 @@
     <p class="tiny">© 2026 Arun Baag. All rights reserved. The design and code of this website may not be copied, reused or modified.</p>
     <p class="tiny">This is a personal website of an Authorised Utility Warehouse (UW) Partner. It is not the official UW website and is not operated by UW.
       The bill health check is a general guide only, not a quote, offer or financial advice. Prices, bundles and offers are confirmed only through UW's official sign-up, where UW's terms apply.
-      · <a href="privacy.html">Privacy notice</a> · <a href="#" id="clearData">Clear my saved answers</a></p>
+      · <a href="privacy.html">Privacy notice</a> · <a href="#" id="clearData">Clear my saved answers</a> · <a href="#" id="footShare">Share this free check</a></p>
   </div>
 </footer>
 

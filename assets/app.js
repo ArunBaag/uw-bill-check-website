@@ -250,21 +250,19 @@
       if (mi.length) add({ k: "mobile", t: "📱 Mobile", lvl: ml, items: mi });
     }
 
-    /* home insurance & cover */
-    var hm = d.home || {}, cv = d.cover || {}, sec = d.security || {}, pt = d.pets || [];
+    /* home cover, pets & security (one UW package) */
+    var cv = d.cover || {}, sec = d.security || {}, pt = d.pets || [];
     var hi = [], hl = "good", policies = 0, ht = 0;
-    var ha = num(hm.annual); if (ha) { policies++; ht += ha / 12; hi.push("Home insurance" + (hm.insurer ? " with " + hm.insurer : "") + ": " + gbp(ha) + " a year."); }
-    var dh = daysTo(hm.renewal); if (dh != null && dh >= 0 && dh <= 45) { hi.push("Home insurance renews " + fmtDate(hm.renewal) + " - don't let it auto-renew without comparing."); hl = "warn"; flags++; }
     var cm = num(cv.monthly); if (cm) { policies++; ht += cm; hi.push("Boiler & home cover" + (cv.provider ? " with " + cv.provider : "") + ": " + gbp(cm, 2) + "/month" + ((cv.covers || []).length ? " (" + cv.covers.join(", ") + ")." : ".")); }
     pt.forEach(function (p) { var pm = num(p.monthly); if (pm) { policies++; ht += pm; hi.push((p.type || "Pet") + " insurance" + (p.insurer ? " with " + p.insurer : "") + ": " + gbp(pm, 2) + "/month."); } });
     var sm = num(sec.monthly); if (sm) { policies++; ht += sm; hi.push("Home security" + (sec.provider ? " with " + sec.provider : "") + ": " + gbp(sm, 2) + "/month."); }
     if (policies) {
-      spend += ht * 12; counted.push("Home insurance & cover"); checks++;
+      spend += ht * 12; counted.push("Home cover"); checks++;
       if (policies >= 2) { hi.push("You're paying " + policies + " separate providers - about " + gbp(ht, 2) + "/month. These can be combined into one package on one bill."); hl = hl === "good" ? "warn" : hl; flags++; }
       if ((cv.covers || []).length && (cv.covers || []).length < 4) hi.push("Your cover doesn't include everything (e.g. " + ["Plumbing", "Drainage", "Electrics", "Central heating"].filter(function (x) { return (cv.covers || []).indexOf(x) < 0; }).slice(0, 2).join(", ") + ") - I can show a package that does.");
-      add({ k: "home", t: "🏠 Home insurance & cover", lvl: hl, items: hi });
-    } else if (hm.type || cv.provider) {
-      add({ k: "home", t: "🏠 Home insurance & cover", lvl: "info", items: ["Add your prices and I'll check them."] });
+      add({ k: "home", t: "🏠 Home cover & insurance", lvl: hl, items: hi });
+    } else if (cv.provider) {
+      add({ k: "home", t: "🏠 Home cover & insurance", lvl: "info", items: ["Add your prices and I'll check them."] });
     }
 
     /* car */
@@ -299,7 +297,7 @@
     }).join("");
     var nUW = a.counted.filter(function (x) { return x !== "Car insurance"; }).length;
     if (nUW >= 2) html += '<div class="res info"><h4>✨ One bill for everything<span class="tag info">Idea</span></h4><ul><li>You pay ' + nUW +
-      " separate household bills. Utility Warehouse puts energy, broadband, mobile and home insurance & cover on one monthly bill" +
+      " separate household bills. Utility Warehouse puts energy, broadband, mobile and home cover on one monthly bill" +
       (tiers.length ? ", and there's a welcome bonus when you switch 2 or more services (UW terms apply)" : "") + ".</li><li>I'll show you exactly how your numbers compare - no obligation.</li></ul></div>";
     html += '<p class="tiny">Your health check is a general guide based on what you entered and typical market prices (price cap ' + esc(CAP.period || "") +
       "). It is not a quote or advice. Real prices depend on your home and usage and are confirmed only through UW's official sign-up.</p>";
@@ -323,7 +321,7 @@
       line("  Ends", b.end) + line("  Exit fee", b.exit_fee && "£" + b.exit_fee) + line("  TV", b.tv) + line("  Landline", b.landline);
     if ((d.mobile || []).length) s += "\nMOBILE:\n" + d.mobile.map(function (m) { return "  - " + [m.who, m.network, m.monthly && "£" + m.monthly + "/mo", m.data, m.end && "ends " + m.end].filter(Boolean).join(" · "); }).join("\n") + "\n";
     var h = d.home || {}, cv = d.cover || {}, sec = d.security || {}, car = d.car || {};
-    s += "\nHOME INSURANCE & COVER:\n" + line("  Home insurance", [h.type, h.insurer, h.annual && "£" + h.annual + "/yr", h.renewal && "renews " + h.renewal].filter(Boolean).join(" · ")) +
+    s += "\nHOME COVER & INSURANCE:\n" +
       line("  Home cover", [cv.provider, cv.monthly && "£" + cv.monthly + "/mo", (cv.covers || []).join(", ")].filter(Boolean).join(" · ")) +
       (d.pets || []).map(function (p) { return "  Pet: " + [p.type, p.insurer, p.monthly && "£" + p.monthly + "/mo"].filter(Boolean).join(" · ") + "\n"; }).join("") +
       line("  Security", [sec.provider, sec.monthly && "£" + sec.monthly + "/mo"].filter(Boolean).join(" · "));

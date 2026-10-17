@@ -1,7 +1,7 @@
 # Free household bill check (personal website)
 
 A one-page website for friends and prospects: they fill in their energy, broadband, mobile,
-home insurance & cover and car insurance details, get an instant **bill health check**, and send
+home cover (boiler, plumbing, drainage, electrics), pets, home security and car insurance details, get an instant **bill health check**, and send
 it to you by email (Web3Forms), WhatsApp or their own email app.
 
 No server, no build step, no cookies or tracking - it runs free on **GitHub Pages**.

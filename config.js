@@ -6,7 +6,7 @@ window.SITE_CONFIG = {
   partnerTitle: "Authorised UW Partner",
   partnerId: "",                       // e.g. "UW12345" - leave "" to hide
   email: "er.arunbaag@gmail.com",
-  whatsapp: "",                        // your mobile in international format, no + or spaces, e.g. "447700900123"
+  whatsapp: "447448894997",                        // your mobile in international format, no + or spaces, e.g. "447700900123"
   area: "",                            // e.g. "Leicester & surrounding areas" - leave "" to hide
 
   // Free form delivery: sign up at https://web3forms.com with your email, copy the Access Key here.
